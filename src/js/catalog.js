@@ -1,12 +1,12 @@
 const API_URL = 'https://www.googleapis.com/books/v1/volumes?q=';
-
 const searchInput = document.getElementById('searchInput');
+const categoryFilter = document.getElementById('categoryFilter');
+const authorInput = document.getElementById('authorInput');
 const searchBtn = document.getElementById('searchBtn');
 const bookList = document.getElementById('bookList');
 
-// Función para renderizar libros
 function renderBooks(books) {
-  bookList.innerHTML = ''; // Limpiar antes de insertar
+  bookList.innerHTML = '';
 
   if (!books || books.length === 0) {
     bookList.innerHTML = '<p>No books found.</p>';
@@ -29,20 +29,6 @@ function renderBooks(books) {
   });
 }
 
-// Buscar libros al hacer click
-searchBtn.addEventListener('click', () => {
-  const query = searchInput.value.trim();
-  if (query) {
-    fetchBooks(query);
-  }
-});
-
-// Búsqueda inicial por defecto
-window.addEventListener('DOMContentLoaded', () => {
-  fetchBooks('subject:fiction');
-});
-
-// Función para obtener libros de la API
 async function fetchBooks(query) {
   try {
     const res = await fetch(`${API_URL}${encodeURIComponent(query)}&maxResults=12`);
@@ -53,3 +39,47 @@ async function fetchBooks(query) {
     bookList.innerHTML = '<p>Error fetching data. Try again later.</p>';
   }
 }
+
+function buildQuery() {
+  const keyword = searchInput.value.trim();
+  const category = categoryFilter.value.trim();
+  const author = authorInput.value.trim();
+
+  let query = '';
+
+  if (keyword) {
+    query += keyword;
+  }
+
+  if (category) {
+    query += `+subject:${category}`;
+  }
+
+  if (author) {
+    query += `+inauthor:${author}`;
+  }
+
+  return query || 'subject:fiction'; // fallback por defecto
+}
+
+searchBtn.addEventListener('click', () => {
+  const query = buildQuery();
+  fetchBooks(query);
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+  fetchBooks('subject:fiction');
+});
+
+searchInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    const query = buildQuery();
+    fetchBooks(query);
+  }
+});
+
+categoryFilter.addEventListener('change', () => {
+  const query = buildQuery();
+  fetchBooks(query);
+});
