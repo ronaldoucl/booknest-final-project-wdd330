@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BookNest - Checkout</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>📚 BookNest</h1>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/src/catalog/index.html">Catalog</a>
+        <a href="/src/cart/index.html">Cart</a>
+        <a href="/src/favorites/index.html">Favorites</a>
+        <a href="/src/checkout/index.html">Checkout</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="checkout-confirmation">
+        <h2>Thank you for your purchase!</h2>
+        <p>Your order has been successfully placed.</p>
+        <h3>Order Summary:</h3>
+        <ul id="orderSummary"></ul>
+        <p><strong>Total Paid:</strong> $<span id="totalPaid">0.00</span></p>
+        <a href="/" class="btn">Return to Home</a>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 BookNest</p>
+    </footer>
+
+    <script type="module" src="../js/checkout.js"></script>
+  </body>
+</html>

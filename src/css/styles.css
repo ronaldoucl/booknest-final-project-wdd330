@@ -99,6 +99,45 @@ footer {
   cursor: pointer;
 }
 
+/* Animations */
+.btn, .btn-small {
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover, .btn-small:hover {
+  background-color: #8d6e63;
+  transform: scale(1.05);
+}
+
+.book-card {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+.book-card:nth-child(even) {
+  animation-delay: 0.1s;
+}
+.book-card:nth-child(odd) {
+  animation-delay: 0.2s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.book-card img {
+  transition: transform 0.3s ease;
+}
+
+.book-card:hover img {
+  transform: scale(1.08);
+}
+
+
 @media (min-width: 768px) {
   .book-detail__container {
     flex-direction: row;

@@ -23,6 +23,7 @@ function renderBookDetail(book) {
         <p><strong>Categories:</strong> ${info.categories?.join(', ') || 'N/A'}</p>
         <p><strong>Description:</strong> ${info.description || 'No description available.'}</p>
         <button class="btn" onclick="addToCart('${book.id}', '${info.title.replace(/'/g, "\\'")}')">Add to Cart</button>
+        <button class="btn" onclick="addToFavorites('${book.id}', '${info.title.replace(/'/g, "\\'")}')">Add to Favorites</button>
       </div>
     </div>
   `;
@@ -35,6 +36,18 @@ window.addToCart = function (id, title) {
   localStorage.setItem('cart', JSON.stringify(cart));
   alert(`"${title}" was added to your cart!`);
 };
+
+window.addToFavorites = function (id, title) {
+  const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+  if (!favorites.find(book => book.id === id)) {
+    favorites.push({ id, title });
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+    alert(`"${title}" was added to your favorites!`);
+  } else {
+    alert(`"${title}" is already in your favorites.`);
+  }
+};
+
 
 // Obtener y mostrar los datos
 async function loadBook() {
