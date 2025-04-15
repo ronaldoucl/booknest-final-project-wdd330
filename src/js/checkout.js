@@ -1,9 +1,13 @@
+import { getFromStorage, formatPrice } from './utils.js';
+
 const orderSummary = document.getElementById('orderSummary');
 const totalPaid = document.getElementById('totalPaid');
 
 function loadCheckout() {
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const cart = getFromStorage('cart');
   let total = 0;
+
+  orderSummary.innerHTML = '';
 
   if (cart.length === 0) {
     orderSummary.innerHTML = '<li>Your cart was empty.</li>';
@@ -15,13 +19,13 @@ function loadCheckout() {
     total += parseFloat(price);
 
     const li = document.createElement('li');
-    li.innerHTML = `<strong>${item.title}</strong> - $${price}`;
+    li.innerHTML = `<strong>${item.title}</strong> - ${formatPrice(price)}`;
     orderSummary.appendChild(li);
   });
 
-  totalPaid.textContent = total.toFixed(2);
+  totalPaid.textContent = formatPrice(total);
 
-  // Vaciar el carrito
+  // Limpiar carrito después de la compra
   localStorage.removeItem('cart');
 }
 

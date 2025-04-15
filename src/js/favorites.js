@@ -1,9 +1,11 @@
+import { getFromStorage, saveToStorage, clearElement } from './utils.js';
+
 const favoritesList = document.getElementById('favoritesList');
 
 function loadFavorites() {
-  const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+  const favorites = getFromStorage('favorites');
+  clearElement(favoritesList);
 
-  favoritesList.innerHTML = '';
   if (favorites.length === 0) {
     favoritesList.innerHTML = '<li>You have no favorite books.</li>';
     return;
@@ -25,9 +27,9 @@ function loadFavorites() {
 favoritesList.addEventListener('click', (e) => {
   if (e.target.tagName === 'BUTTON') {
     const index = e.target.dataset.index;
-    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    const favorites = getFromStorage('favorites');
     favorites.splice(index, 1);
-    localStorage.setItem('favorites', JSON.stringify(favorites));
+    saveToStorage('favorites', favorites);
     loadFavorites();
   }
 });

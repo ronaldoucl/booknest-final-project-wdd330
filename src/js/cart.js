@@ -1,8 +1,10 @@
+import { getFromStorage, saveToStorage, formatPrice } from './utils.js';
+
 const cartList = document.getElementById("cartItems");
 const cartTotal = document.getElementById("cartTotal");
 
 function loadCart() {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const cart = getFromStorage("cart");
 
   cartList.innerHTML = "";
   let total = 0;
@@ -13,28 +15,26 @@ function loadCart() {
   }
 
   cart.forEach((item, index) => {
-    // Simular precio entre $9.99 y $29.99
     const price = (Math.random() * (30 - 9.99) + 9.99).toFixed(2);
     total += parseFloat(price);
 
     const li = document.createElement("li");
     li.innerHTML = `
-      <strong>${item.title}</strong> - $${price}
+      <strong>${item.title}</strong> - ${formatPrice(price)}
       <button class="btn-small" data-index="${index}">Remove</button>
     `;
     cartList.appendChild(li);
   });
 
-  cartTotal.textContent = total.toFixed(2);
+  cartTotal.textContent = formatPrice(total);
 }
 
-// Eliminar un libro
 cartList.addEventListener("click", (e) => {
   if (e.target.tagName === "BUTTON") {
     const index = e.target.dataset.index;
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cart = getFromStorage("cart");
     cart.splice(index, 1);
-    localStorage.setItem("cart", JSON.stringify(cart));
+    saveToStorage("cart", cart);
     loadCart();
   }
 });
