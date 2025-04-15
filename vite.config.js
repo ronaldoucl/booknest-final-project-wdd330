@@ -3,7 +3,6 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   root: './',
-  base: '/booknest-final-project-wdd330/',
   build: {
     outDir: 'dist',
     rollupOptions: {
