@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BookNest - Catalog</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>📚 BookNest</h1>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/src/catalog/index.html">Catalog</a>
+        <a href="/src/cart/index.html">Cart</a>
+        <a href="/src/checkout/index.html">Checkout</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="search">
+        <input type="text" id="searchInput" placeholder="Search for books..." />
+        <button id="searchBtn">Search</button>
+      </section>
+
+      <section id="bookList" class="grid">
+        <!-- Books will be inserted here -->
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 BookNest</p>
+    </footer>
+
+    <script type="module" src="../js/catalog.js"></script>
+  </body>
+</html>

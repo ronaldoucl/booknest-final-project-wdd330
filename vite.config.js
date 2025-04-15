@@ -1,0 +1,18 @@
+import { resolve } from 'path';
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+  root: './',
+  build: {
+    outDir: 'dist',
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        catalog: resolve(__dirname, 'src/catalog/index.html'),
+        product: resolve(__dirname, 'src/product/index.html'),
+        cart: resolve(__dirname, 'src/cart/index.html'),
+        checkout: resolve(__dirname, 'src/checkout/index.html'),
+      },
+    },
+  },
+});

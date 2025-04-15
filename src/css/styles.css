@@ -1,0 +1,82 @@
+body {
+  font-family: "Josefin Sans", sans-serif;
+  background-color: #fff8f0;
+  color: #4e342e;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #d7a86e;
+  padding: 1rem;
+  text-align: center;
+}
+
+nav a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.intro {
+  text-align: center;
+  margin: 4rem auto;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #a1887f;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-family: "Kanit", sans-serif;
+  font-size: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.book-card {
+  background: #fefefe;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.book-card img {
+  height: 193px;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f1e4d1;
+}
+
+.book-detail__container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.book-detail__container img {
+  width: 150px;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .book-detail__container {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
