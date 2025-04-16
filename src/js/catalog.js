@@ -24,7 +24,7 @@ function renderBooks(books) {
 
     bookCard.innerHTML = `
       <img src="${
-        info.imageLinks?.thumbnail || "https://via.placeholder.com/128x193"
+        info.imageLinks?.thumbnail || "https://placehold.co/128x193"
       }" alt="${info.title}" />
       <h3>${info.title}</h3>
       <p>${info.authors ? info.authors.join(", ") : "Unknown Author"}</p>

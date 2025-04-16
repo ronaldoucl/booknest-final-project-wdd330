@@ -17,10 +17,20 @@ function loadCart() {
   cart.forEach((item, index) => {
     const price = (Math.random() * (30 - 9.99) + 9.99).toFixed(2);
     total += parseFloat(price);
+    console.log(item);
 
     const li = document.createElement("li");
     li.innerHTML = `
-      <strong>${item.title}</strong> - ${formatPrice(price)}
+      <div class='cart-item'>
+        <div>
+          <img src="${item.image}" alt="${item.title}" />
+        </div>
+        <div>
+          <p><strong>Title: </strong> ${item.title}</p>
+          <p><strong>Price: </strong> ${formatPrice(price)}</p>
+          <p><strong>Quantity: </strong> 1</p>
+        </div>
+      </div>
       <button class="btn-small" data-index="${index}">Remove</button>
     `;
     cartList.appendChild(li);

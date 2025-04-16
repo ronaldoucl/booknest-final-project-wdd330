@@ -27,7 +27,6 @@ function loadCheckout() {
 
   totalPaid.textContent = formatPrice(total);
 
-  // Limpiar carrito después de la compra
   localStorage.removeItem('cart');
 }
 

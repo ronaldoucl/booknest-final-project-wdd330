@@ -15,8 +15,15 @@ function loadFavorites() {
 
   favorites.forEach((item, index) => {
     const li = document.createElement('li');
+    console.log(item);
     li.innerHTML = `
-      <strong>${item.title}</strong>
+      <div class='cart-item'>
+        <img src="${item.image}" alt="${item.title}" />
+        <div>
+          <p><strong>Title: </strong>${item.title}</p>
+          <p><strong>Author/s: </strong>${item.authors}</p>
+        </div>
+      </div>
       <div>
         <a href="/src/product/index.html?id=${item.id}" class="btn-small">View</a>
         <button class="btn-small" data-index="${index}">Remove</button>

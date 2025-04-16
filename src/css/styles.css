@@ -106,26 +106,32 @@ nav a {
   background-color: var(--color-primary);
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1.5rem;
-  padding: 2rem;
+/* Catalog */
+.book-list {
+  display: flex;
+  width: 90%;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-bottom: 3rem;
 }
 
 .book-card {
-  background: #fefefe;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  width: 25%;
   text-align: center;
+  border: 1px solid var(--color-primary);
+  border-radius: 5px;
+  background-color: var(--color-accent);
   padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .book-card img {
-  height: 193px;
-  object-fit: cover;
-  margin-bottom: 0.5rem;
+  display: block;
+  width: 150px;
+  height: 220px;
+  margin: 0 auto;
+  border: 3px;
 }
 
 footer {
@@ -146,10 +152,16 @@ footer {
   margin-bottom: 1rem;
 }
 
+section h2 {
+  text-align: center;
+}
+
 .cart-list {
+  display: block;
+  width: 75%;
+  margin: 0 auto;
+  margin-bottom: 22px;
   list-style: none;
-  padding: 0;
-  margin: 1rem 0;
 }
 
 .cart-list li {
@@ -161,6 +173,13 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 18px;
+}
+
+.cart-total {
+  text-align: center;
+  margin: 25px;
+  font-size: 22px;
 }
 
 .btn-small {
@@ -169,6 +188,12 @@ footer {
   border: none;
   padding: 0.25rem 0.5rem;
   cursor: pointer;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 /*Categories*/
@@ -206,6 +231,10 @@ footer {
   transform: scale(1.05);
 }
 
+.btn-cart {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
 
 /* Animations */
 .btn, .btn-small {
@@ -223,12 +252,6 @@ footer {
   animation: fadeInUp 0.4s ease forwards;
 }
 
-.book-card:nth-child(even) {
-  animation-delay: 0.1s;
-}
-.book-card:nth-child(odd) {
-  animation-delay: 0.2s;
-}
 
 @keyframes fadeInUp {
   to {
