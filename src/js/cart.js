@@ -1,4 +1,9 @@
-import { getFromStorage, saveToStorage, formatPrice, loadHeaderFooter } from './utils.js';
+import {
+  getFromStorage,
+  saveToStorage,
+  formatPrice,
+  loadHeaderFooter,
+} from "./utils.js";
 
 const cartList = document.getElementById("cartItems");
 const cartTotal = document.getElementById("cartTotal");

@@ -1,24 +1,29 @@
-import { getFromStorage, saveToStorage, clearElement, loadHeaderFooter } from './utils.js';
+import {
+  getFromStorage,
+  saveToStorage,
+  clearElement,
+  loadHeaderFooter,
+} from "./utils.js";
 
 loadHeaderFooter();
 
-const favoritesList = document.getElementById('favoritesList');
+const favoritesList = document.getElementById("favoritesList");
 
 /**
  * Loads favorite books from localStorage and renders them in a list.
  * If there are no favorites, displays a placeholder message.
  */
 function loadFavorites() {
-  const favorites = getFromStorage('favorites');
+  const favorites = getFromStorage("favorites");
   clearElement(favoritesList);
 
   if (favorites.length === 0) {
-    favoritesList.innerHTML = '<li>You have no favorite books.</li>';
+    favoritesList.innerHTML = "<li>You have no favorite books.</li>";
     return;
   }
 
   favorites.forEach((item, index) => {
-    const li = document.createElement('li');
+    const li = document.createElement("li");
     console.log(item);
     li.innerHTML = `
       <div class='cart-item'>
@@ -42,12 +47,12 @@ function loadFavorites() {
  * If the "Remove" button is clicked, the book is removed from localStorage
  * and the list is refreshed.
  */
-favoritesList.addEventListener('click', (e) => {
-  if (e.target.tagName === 'BUTTON') {
+favoritesList.addEventListener("click", (e) => {
+  if (e.target.tagName === "BUTTON") {
     const index = e.target.dataset.index;
-    const favorites = getFromStorage('favorites');
+    const favorites = getFromStorage("favorites");
     favorites.splice(index, 1);
-    saveToStorage('favorites', favorites);
+    saveToStorage("favorites", favorites);
     loadFavorites();
   }
 });

@@ -46,7 +46,13 @@ export function clearElement(element) {
 /**
  * Renders a list of items into a parent element using a template function.
  */
-export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false) {
+export function renderListWithTemplate(
+  templateFn,
+  parentElement,
+  list,
+  position = "afterbegin",
+  clear = false
+) {
   const htmlStrings = list.map(templateFn);
   if (clear) {
     parentElement.innerHTML = "";

@@ -1,4 +1,4 @@
-const BASE_URL = 'https://www.googleapis.com/books/v1/volumes';
+const BASE_URL = "https://www.googleapis.com/books/v1/volumes";
 
 /**
  * Fetches books based on a search query.
@@ -8,11 +8,13 @@ const BASE_URL = 'https://www.googleapis.com/books/v1/volumes';
  */
 export async function fetchBooks(query, maxResults = 12) {
   try {
-    const res = await fetch(`${BASE_URL}?q=${encodeURIComponent(query)}&maxResults=${maxResults}`);
+    const res = await fetch(
+      `${BASE_URL}?q=${encodeURIComponent(query)}&maxResults=${maxResults}`
+    );
     const data = await res.json();
     return data.items || [];
   } catch (error) {
-    console.error('Error fetching books:', error);
+    console.error("Error fetching books:", error);
     return [];
   }
 }
@@ -27,7 +29,7 @@ export async function fetchBookById(id) {
     const res = await fetch(`${BASE_URL}/${id}`);
     return await res.json();
   } catch (error) {
-    console.error('Error fetching book by ID:', error);
+    console.error("Error fetching book by ID:", error);
     return null;
   }
 }

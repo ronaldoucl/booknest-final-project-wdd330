@@ -1,5 +1,5 @@
 import { loadHeaderFooter } from "./utils.js";
-import { fetchBooks } from './ExternalServices.mjs';
+import { fetchBooks } from "./ExternalServices.mjs";
 
 // Load header and footer on the page
 loadHeaderFooter();
@@ -64,7 +64,7 @@ function buildQuery() {
     query += `+inauthor:${author}`;
   }
 
-  return query || "subject:fiction"; 
+  return query || "subject:fiction";
 }
 
 /**
