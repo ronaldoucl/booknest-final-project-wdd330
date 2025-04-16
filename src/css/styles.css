@@ -252,6 +252,25 @@ section h2 {
   animation: fadeInUp 0.4s ease forwards;
 }
 
+/* Checkout */
+
+.checkout-confirmation {
+  text-align: center;
+}
+
+.checkout-confirmation ul {
+  display: block;
+  width: 60%;
+  margin: 0 auto;
+  padding: 1rem;
+  list-style: none;
+  border: 1px solid var(--color-primary);
+  border-radius: 1rem;
+}
+
+.checkout-confirmation ul li {
+  margin-bottom: 5px;
+}
 
 @keyframes fadeInUp {
   to {
