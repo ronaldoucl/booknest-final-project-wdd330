@@ -1,3 +1,7 @@
+import { loadHeaderFooter } from './utils.js';
+
+loadHeaderFooter();
+
 const API_URL = 'https://www.googleapis.com/books/v1/volumes?q=';
 const searchInput = document.getElementById('searchInput');
 const categoryFilter = document.getElementById('categoryFilter');

@@ -1,4 +1,6 @@
-import { getFromStorage, saveToStorage, clearElement } from './utils.js';
+import { getFromStorage, saveToStorage, clearElement, loadHeaderFooter } from './utils.js';
+
+loadHeaderFooter();
 
 const favoritesList = document.getElementById('favoritesList');
 

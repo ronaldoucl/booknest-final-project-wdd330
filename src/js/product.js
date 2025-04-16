@@ -1,4 +1,6 @@
-import { getQueryParam, saveToStorage, getFromStorage } from './utils.js';
+import { getQueryParam, saveToStorage, getFromStorage, loadHeaderFooter } from './utils.js';
+
+loadHeaderFooter();
 
 const API_URL = 'https://www.googleapis.com/books/v1/volumes';
 const bookDetail = document.getElementById('bookDetail');

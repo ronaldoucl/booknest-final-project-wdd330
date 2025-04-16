@@ -1,4 +1,4 @@
-import { getFromStorage, saveToStorage, formatPrice } from './utils.js';
+import { getFromStorage, saveToStorage, formatPrice, loadHeaderFooter } from './utils.js';
 
 const cartList = document.getElementById("cartItems");
 const cartTotal = document.getElementById("cartTotal");
@@ -40,3 +40,4 @@ cartList.addEventListener("click", (e) => {
 });
 
 loadCart();
+loadHeaderFooter();

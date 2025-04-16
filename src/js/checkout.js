@@ -1,4 +1,6 @@
-import { getFromStorage, formatPrice } from './utils.js';
+import { getFromStorage, formatPrice, loadHeaderFooter } from './utils.js';
+
+loadHeaderFooter();
 
 const orderSummary = document.getElementById('orderSummary');
 const totalPaid = document.getElementById('totalPaid');
