@@ -85,4 +85,21 @@ export async function loadHeaderFooter() {
 
   renderWithTemplate(headerTemplate, headerElement);
   renderWithTemplate(footerTemplate, footerElement);
+
+  setupHamburgerMenu();
+}
+
+/**
+ * Enables the responsive hamburger menu functionality.
+ * Toggles the visibility of the navigation menu when the button is clicked.
+ */
+function setupHamburgerMenu() {
+  const toggleBtn = document.getElementById("hamburger");
+  const navMenu = document.querySelector("header nav");
+
+  if (toggleBtn && navMenu) {
+    toggleBtn.addEventListener("click", () => {
+      navMenu.classList.toggle("show");
+    });
+  }
 }

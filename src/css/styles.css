@@ -15,8 +15,20 @@ body {
 
 header {
   background-color: var(--color-accent);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 1rem;
-  text-align: center;
+  position: relative;
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
 }
 
 nav a {
@@ -24,6 +36,14 @@ nav a {
   text-decoration: none;
   color: #fff;
   font-weight: bold;
+}
+
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .intro {
@@ -306,6 +326,26 @@ section h2 {
   }
 
   /* Nav */
+  .hamburger {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    position: absolute;
+    top: 100%;
+    right: 1rem;
+    background: var(--color-primary);
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  nav.show {
+    display: flex;
+  }
+
   nav a {
     display: block;
     margin-bottom: 20px;
