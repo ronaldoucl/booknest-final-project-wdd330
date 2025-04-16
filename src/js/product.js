@@ -5,6 +5,12 @@ loadHeaderFooter();
 const API_URL = 'https://www.googleapis.com/books/v1/volumes';
 const bookDetail = document.getElementById('bookDetail');
 
+/**
+ * Adds a book to the cart and saves it in localStorage.
+ * @param {string} image - The image URL of the book.
+ * @param {string} id - The unique ID of the book.
+ * @param {string} title - The title of the book.
+ */
 window.addToCart = function (image, id, title) {
   const cart = getFromStorage('cart');
   cart.push({ id, title, image });
@@ -12,6 +18,13 @@ window.addToCart = function (image, id, title) {
   alert(`"${title}" was added to your cart!`);
 };
 
+/**
+ * Adds a book to the favorites list if it doesn't already exist.
+ * @param {string} authors - The authors of the book.
+ * @param {string} image - The image URL of the book.
+ * @param {string} id - The unique ID of the book.
+ * @param {string} title - The title of the book.
+ */
 window.addToFavorites = function (authors, image, id, title) {
   const favorites = getFromStorage('favorites');
   if (!favorites.find(book => book.id === id)) {
@@ -23,6 +36,11 @@ window.addToFavorites = function (authors, image, id, title) {
   }
 };
 
+/**
+ * Renders the book details in the DOM, including image, title, author,
+ * description, and buttons to add to cart or favorites.
+ * @param {Object} book - The book object returned by the Google Books API.
+ */
 function renderBookDetail(book) {
   console.log(book);
   const info = book.volumeInfo;
@@ -40,6 +58,10 @@ function renderBookDetail(book) {
   `;
 }
 
+/**
+ * Loads the book details using the ID from the URL query parameter.
+ * Fetches data from the Google Books API and renders it.
+ */
 async function loadBook() {
   const id = getQueryParam('id');
   if (!id) return;
@@ -54,4 +76,5 @@ async function loadBook() {
   }
 }
 
+// Initialize the page by loading book data
 loadBook();

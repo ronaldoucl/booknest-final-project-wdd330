@@ -4,6 +4,10 @@ loadHeaderFooter();
 
 const favoritesList = document.getElementById('favoritesList');
 
+/**
+ * Loads favorite books from localStorage and renders them in a list.
+ * If there are no favorites, displays a placeholder message.
+ */
 function loadFavorites() {
   const favorites = getFromStorage('favorites');
   clearElement(favoritesList);
@@ -33,6 +37,11 @@ function loadFavorites() {
   });
 }
 
+/**
+ * Handles click events on the favorites list.
+ * If the "Remove" button is clicked, the book is removed from localStorage
+ * and the list is refreshed.
+ */
 favoritesList.addEventListener('click', (e) => {
   if (e.target.tagName === 'BUTTON') {
     const index = e.target.dataset.index;

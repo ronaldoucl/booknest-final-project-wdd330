@@ -3,6 +3,11 @@ import { getFromStorage, saveToStorage, formatPrice, loadHeaderFooter } from './
 const cartList = document.getElementById("cartItems");
 const cartTotal = document.getElementById("cartTotal");
 
+/**
+ * Loads the shopping cart from localStorage and renders it in the cart view.
+ * Calculates the total price and displays each item with title, price, and quantity.
+ * If the cart is empty, displays a message.
+ */
 function loadCart() {
   const cart = getFromStorage("cart");
 
@@ -15,6 +20,7 @@ function loadCart() {
   }
 
   cart.forEach((item, index) => {
+    // Generate a mock price for demonstration purposes
     const price = (Math.random() * (30 - 9.99) + 9.99).toFixed(2);
     total += parseFloat(price);
     console.log(item);
@@ -39,6 +45,11 @@ function loadCart() {
   cartTotal.textContent = formatPrice(total);
 }
 
+/**
+ * Handles click events on the cart item list.
+ * When a "Remove" button is clicked, the corresponding item is removed from the cart
+ * and the view is updated.
+ */
 cartList.addEventListener("click", (e) => {
   if (e.target.tagName === "BUTTON") {
     const index = e.target.dataset.index;
@@ -49,5 +60,6 @@ cartList.addEventListener("click", (e) => {
   }
 });
 
+// Initialize the cart and load header/footer content
 loadCart();
 loadHeaderFooter();
