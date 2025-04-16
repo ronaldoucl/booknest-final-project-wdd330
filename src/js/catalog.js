@@ -1,4 +1,5 @@
 import { loadHeaderFooter } from "./utils.js";
+import { fetchBooks } from './ExternalServices.mjs';
 
 // Load header and footer on the page
 loadHeaderFooter();
@@ -41,23 +42,6 @@ function renderBooks(books) {
 }
 
 /**
- * Fetches books from the Google Books API based on a query.
- * @param {string} query - The search query string.
- */
-async function fetchBooks(query) {
-  try {
-    const res = await fetch(
-      `${API_URL}${encodeURIComponent(query)}&maxResults=12`
-    );
-    const data = await res.json();
-    renderBooks(data.items);
-  } catch (err) {
-    console.error("Error fetching books:", err);
-    bookList.innerHTML = "<p>Error fetching data. Try again later.</p>";
-  }
-}
-
-/**
  * Builds the query string based on user input for keyword, category, and author.
  * @returns {string} - The complete search query for the API.
  */
@@ -86,41 +70,43 @@ function buildQuery() {
 /**
  * Handles search button click and fetches books based on built query.
  */
-searchBtn.addEventListener("click", () => {
+searchBtn.addEventListener("click", async () => {
   const query = buildQuery();
-  fetchBooks(query);
+  const books = await fetchBooks(query);
+  renderBooks(books);
 });
 
 /**
  * Loads books on page load, using a saved category from localStorage if available.
  */
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded", async () => {
   const savedCategory = localStorage.getItem("selectedCategory");
+  const query = savedCategory ? `subject:${savedCategory}` : "subject:fiction";
   if (savedCategory) {
     categoryFilter.value = savedCategory;
-    const query = buildQuery();
-    fetchBooks(query);
     localStorage.removeItem("selectedCategory");
-  } else {
-    fetchBooks("subject:fiction");
   }
+  const books = await fetchBooks(query);
+  renderBooks(books);
 });
 
 /**
  * Handles Enter key press in the search input to trigger a search.
  */
-searchInput.addEventListener("keydown", (e) => {
+searchInput.addEventListener("keydown", async (e) => {
   if (e.key === "Enter") {
     e.preventDefault();
     const query = buildQuery();
-    fetchBooks(query);
+    const books = await fetchBooks(query);
+    renderBooks(books);
   }
 });
 
 /**
  * Handles category filter changes to update the book list dynamically.
  */
-categoryFilter.addEventListener("change", () => {
+categoryFilter.addEventListener("change", async () => {
   const query = buildQuery();
-  fetchBooks(query);
+  const books = await fetchBooks(query);
+  renderBooks(books);
 });

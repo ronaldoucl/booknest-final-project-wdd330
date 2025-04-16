@@ -1,8 +1,8 @@
 import { getQueryParam, saveToStorage, getFromStorage, loadHeaderFooter } from './utils.js';
+import { fetchBookById } from './ExternalServices.mjs';
 
 loadHeaderFooter();
 
-const API_URL = 'https://www.googleapis.com/books/v1/volumes';
 const bookDetail = document.getElementById('bookDetail');
 
 /**
@@ -66,14 +66,12 @@ async function loadBook() {
   const id = getQueryParam('id');
   if (!id) return;
 
-  try {
-    const res = await fetch(`${API_URL}/${id}`);
-    const data = await res.json();
-    renderBookDetail(data);
-  } catch (err) {
-    console.error(err);
+  const book = await fetchBookById(id);
+  if (!book) {
     bookDetail.innerHTML = '<p>Error loading book details.</p>';
+    return;
   }
+  renderBookDetail(book);
 }
 
 // Initialize the page by loading book data
